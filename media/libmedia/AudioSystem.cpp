@@ -379,6 +379,14 @@ status_t AudioSystem::setFmVolume(float value)
 }
 #endif
 
+#ifdef SHADOW_HARDWARE
+// stubs for motorola shadow-based hardware (DX/D2/etc)
+bool AudioSystem::isA2dpCapable(uint32_t format, uint32_t channels, uint32_t samplingRate) { return false; }
+void AudioSystem::a2dpReconfigure(int output, uint32_t format, uint32_t channels, uint32_t sampleRate) { }
+void AudioSystem::stopA2dp() { }
+bool AudioSystem::a2dpCategory2Supported() { return false; }
+#endif
+
 // ---------------------------------------------------------------------------
 
 void AudioSystem::AudioFlingerClient::binderDied(const wp<IBinder>& who) {

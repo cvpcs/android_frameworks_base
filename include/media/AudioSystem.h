@@ -237,6 +237,14 @@ public:
     static status_t setFmVolume(float volume);
 #endif
 
+#ifdef SHADOW_HARDWARE
+    // stubs needed for motorola shadow-based hardware (DX/D2/etc)
+     static bool isA2dpCapable(uint32_t format, uint32_t channels, uint32_t samplingRate);
+     static void a2dpReconfigure(int output, uint32_t format, uint32_t channels, uint32_t sampleRate);
+     static void stopA2dp();
+     static bool a2dpCategory2Supported();
+#endif
+
     // return the number of audio frames written by AudioFlinger to audio HAL and
     // audio dsp to DAC since the output on which the specificed stream is playing
     // has exited standby.
